@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app1/Home/Quran/sura_name_item.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../my_theme.dart';
 
@@ -23,7 +24,8 @@ class QuranTab extends StatelessWidget {
       child:Column(children: [
         Image.asset('assets/images/quran_main_bg.png'),
         Divider(color: MyThemeData.colorGold,thickness: 3,),
-        Text('SuraNames',style: Theme.of(context).textTheme.subtitle1,textAlign:TextAlign.center,),
+        Text(AppLocalizations.of(context)!.sura_name
+          ,style: Theme.of(context).textTheme.subtitle1,textAlign:TextAlign.center,),
         Divider(color: MyThemeData.colorGold,thickness: 3,),
         Expanded(
           child: ListView.separated(

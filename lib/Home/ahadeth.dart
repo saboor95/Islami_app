@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app1/hadeth_details/hadeth_Details.dart';
 import 'package:islami_app1/my_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AhadethTab extends StatefulWidget {
   static const String routeName='ahadeth';
@@ -23,7 +24,9 @@ List <HadethData> Ahadeth=[];
           children: [
           Image.asset('assets/images/ahadeh_main_bg.png'),
             Divider(color: MyThemeData.colorGold,thickness: 3,),
-       Text('Ahadeth',style: Theme.of(context).textTheme.subtitle1,textAlign:TextAlign.center,),
+       Text(
+         AppLocalizations.of(context)!.ahadeth,
+         style: Theme.of(context).textTheme.subtitle1,textAlign:TextAlign.center,),
             Divider(color: MyThemeData.colorGold,thickness: 3,),
       Ahadeth.isEmpty?Center(child: CircularProgressIndicator()) :
       Expanded(
