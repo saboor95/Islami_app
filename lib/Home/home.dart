@@ -3,9 +3,9 @@ import 'package:islami_app1/Home/ahadeth.dart';
 import 'package:islami_app1/Home/Quran/quran.dart';
 import 'package:islami_app1/Home/radio.dart';
 import 'package:islami_app1/Home/sebha.dart';
-import 'package:islami_app1/my_theme.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:islami_app1/provider/my_provider.dart';
+import 'package:provider/provider.dart';
 import '../settings/settings.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,9 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var pro=Provider.of<MyProvider>(context);
     return Stack(children: [
       Image.asset(
-        'assets/images/main_backgroud.png',
+        pro.getBackgroundImage(),
         fit: BoxFit.fitWidth,
         width: double.infinity,
       ),
@@ -34,8 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: MyThemeData.colorBlack,
-          unselectedItemColor: Colors.white,
+          type: BottomNavigationBarType.fixed,
           currentIndex: currentIndex,
           onTap: (index) {
             currentIndex = index;
@@ -47,35 +47,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   AssetImage('assets/images/quran.png'),
                   size: 30,
                 ),
-                label: 'Quran',
-                backgroundColor: MyThemeData.colorGold),
+                label:  AppLocalizations.of(context)!.quran,),
+
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assets/images/sebha.png'),
                   size: 30,
                 ),
-                label: 'Sebha',
-                backgroundColor: MyThemeData.colorGold),
+                label:  AppLocalizations.of(context)!.sebha,),
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assets/images/radio.png'),
                   size: 30,
                 ),
-                label: 'Radio',
-                backgroundColor: MyThemeData.colorGold),
+                label:  AppLocalizations.of(context)!.radio,),
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage('assets/images/ahadeth.png'),
                   size: 30,
                 ),
-                label: 'Ahadeth',
-                backgroundColor: MyThemeData.colorGold),
+                label:  AppLocalizations.of(context)!.ahadeth,),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.settings,
                   size: 30,
                 ),
-                label: 'Settings',backgroundColor: MyThemeData.colorGold,),
+                label: AppLocalizations.of(context)!.settings,),
           ],
         ),
         body: tabs[currentIndex],

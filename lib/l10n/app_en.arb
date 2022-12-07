@@ -1,5 +1,10 @@
 {
     "appTitle": "Islami",
      "sura_name": "Sura Names",
-     "ahadeth": "Ahadeth"
+     "ahadeth": "Ahadeth",
+     "quran":"Quran",
+     "sebha":"Sebha",
+     "radio":"Radio",
+     "ahadeth":"Ahadeth",
+     "settings":"Settings"
 }

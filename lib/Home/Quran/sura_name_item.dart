@@ -1,6 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:islami_app1/sura_details/sura_details.dart';
+import 'package:provider/provider.dart';
+
+import '../../provider/my_provider.dart';
 
 class SuraNameItem extends StatelessWidget {
   String name;
@@ -9,6 +11,7 @@ class SuraNameItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProvider>(context);
     return InkWell(
       onTap: (){
         Navigator.pushNamed(context,SuraDetailsScreen.routeName,
@@ -16,7 +19,8 @@ class SuraNameItem extends StatelessWidget {
       },
       child: Text(name,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.subtitle1,),
+        style: TextStyle(color:(provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.secondary:
+        Theme.of(context).colorScheme.onSecondary,fontSize: 25,fontWeight: FontWeight.bold)),
     );
   }
 }

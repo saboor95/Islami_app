@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app1/Home/ahadeth.dart';
-import 'package:islami_app1/my_theme.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/my_provider.dart';
+
+
 
 class HadethDetails extends StatelessWidget {
  static const String routeName='hadethdetails';
 
   @override
   Widget build(BuildContext context) {
+    var pro=Provider.of<MyProvider>(context);
     var args=ModalRoute.of(context)?.settings.arguments as HadethData;
     return Stack(
       children: [
-      Image.asset('assets/images/main_backgroud.png',
-      fit:BoxFit.fitWidth,width:double.infinity,),
+        (pro.mode==ThemeMode.light)?Image.asset('assets/images/main_backgroud.png',fit:BoxFit.fitWidth,width:double.infinity,):
+        Image.asset('assets/images/dark_main_bg.png', fit:BoxFit.fitWidth,width:double.infinity,),
     Scaffold(
     appBar: AppBar(
     title
@@ -19,10 +24,6 @@ class HadethDetails extends StatelessWidget {
       style: Theme.of(context).textTheme.headline1,),
     ),
     body: Container(
-      decoration: BoxDecoration(color: Colors.grey.shade100,
-        borderRadius: BorderRadius.all(Radius.circular(25)),
-        border: Border.all(color: MyThemeData.colorGold,width: 2)
-      ),
       margin: EdgeInsets.symmetric(horizontal: 25,vertical: 30),
       child: ListView.builder(
           itemCount: args.content.length,

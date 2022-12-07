@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app1/my_theme.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/my_provider.dart';
 
 class RadioTab extends StatelessWidget {
   static const String routeName='radio';
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProvider>(context);
     return Container(
       width: double.infinity,
       child:
@@ -17,7 +20,8 @@ class RadioTab extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(top: 25),
             child: Text('إذاعة القرآن الكريم',
-              style: TextStyle(color: MyThemeData.colorBlack,fontSize: 25),),
+              style: TextStyle(color: (provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.secondary:
+              Theme.of(context).colorScheme.onSecondary,fontSize: 25),),
           ),
           Container(
             margin: EdgeInsets.only(top: 20),
@@ -26,15 +30,18 @@ class RadioTab extends StatelessWidget {
               children: [
              Padding(
                padding: const EdgeInsets.all(35),
-               child: Icon(Icons.skip_previous,color: MyThemeData.colorGold,size: 35,),
+               child: Icon(Icons.skip_previous, color: (provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.primary:
+               Theme.of(context).colorScheme.secondary,size: 35,),
              ),
               Padding(
                 padding: const EdgeInsets.all(35),
-                child:Icon(Icons.play_arrow,color: MyThemeData.colorGold,size: 60,),
+                child:Icon(Icons.play_arrow,color: (provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.primary:
+                Theme.of(context).colorScheme.secondary,size: 60,),
               ),
               Padding(
                 padding: const EdgeInsets.all(35),
-                child: Icon(Icons.skip_next,color: MyThemeData.colorGold,size: 35,),
+                child: Icon(Icons.skip_next,color: (provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.primary:
+                Theme.of(context).colorScheme.secondary,size: 35,),
               ),
             ],),
           )

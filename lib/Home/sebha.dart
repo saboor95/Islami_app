@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app1/my_theme.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/my_provider.dart';
 
 class SebhaTab extends StatefulWidget {
   static const String routeName='sebha';
@@ -24,6 +27,7 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProvider>(context);
     return Container(
       width: double.infinity,
       child: Column(
@@ -35,12 +39,14 @@ class _SebhaTabState extends State<SebhaTab> {
                     onTap: () {
                       addtasbeh(count);
                     },
-                    child: Image.asset('assets/images/sebha_main_bg.png'))),
+                    child:(provider.mode==ThemeMode.light)?Image.asset('assets/images/sebha_main_bg.png'):
+               Image.asset('assets/images/sebha_dark.png'))),
             Container(
               margin: EdgeInsets.only(top: 25),
               child: Text('عدد التسبيحات',
                 style:
-                TextStyle(color: MyThemeData.colorBlack,
+                TextStyle(color:(provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.secondary:
+                Theme.of(context).colorScheme.onPrimary,
                     fontSize: 25),),
             ),
             SizedBox(height: 25,),
@@ -49,7 +55,8 @@ class _SebhaTabState extends State<SebhaTab> {
               width: 60,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  color: Color.fromRGBO(183, 147, 95, 150),
+                  color:(provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.primary:
+                  Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(25)),
               child:
               Text('$numsebha', style: Theme
@@ -61,28 +68,36 @@ class _SebhaTabState extends State<SebhaTab> {
             Container(
               height: 50,
               decoration: BoxDecoration(
-                  color: MyThemeData.colorGold,
+                  color: (provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.primary:
+                  Theme.of(context).colorScheme.secondary,
                   borderRadius: BorderRadius.circular(25)),
-              child: DropdownButton(
-                alignment: Alignment.center,
-                value: dropdownValue,
-                items: <String>[
-                  'سبحان الله',
-                  'الحمد لله',
-                  'لا حول ولا قوة الا بالله',
-                  'لا اله الا الله',
-                  'الله أكبر'
-                ]
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(value: value,
-                      child: Text(value, style: TextStyle(fontSize: 25),
-                      ));
-                }).toList(),
-                onChanged: (String? newValue) {
-                  setState(() {
-                    dropdownValue = newValue!;
-                  });
-                },
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton(
+                  dropdownColor:(provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.primary:
+                  Theme.of(context).colorScheme.secondary,
+                  alignment: Alignment.center,
+                  value: dropdownValue,
+                  items: <String>[
+                    'سبحان الله',
+                    'الحمد لله',
+                    'لا حول ولا قوة الا بالله',
+                    'لا اله الا الله',
+                    'الله أكبر'
+                  ]
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(value: value,
+                        child:
+                        Text(value, style: TextStyle(
+                          color:(provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.onPrimary:
+                    MyThemeData.colorBlack,fontWeight: FontWeight.bold
+                        ) ));
+                  }).toList(),
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      dropdownValue = newValue!;
+                    });
+                  },
+                ),
               ),
             ),
             SizedBox(height: 30,width: 60,),
@@ -94,7 +109,7 @@ class _SebhaTabState extends State<SebhaTab> {
 
   void addtasbeh(index) {
     numsebha++;
-    if (numsebha == 33) {
+    if (numsebha == 34) {
       namesebha = items[index];
       numsebha = 0;
       count++;

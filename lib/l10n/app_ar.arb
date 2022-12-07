@@ -1,5 +1,10 @@
 {
     "appTitle": "إسلامي",
      "sura_name": "أسماء السور",
-     "ahadeth": "أحاديث"
+     "ahadeth": "أحاديث",
+     "quran":"قران",
+     "sebha":"سبحة",
+     "radio":"راديو",
+     "ahadeth":"أحاديث",
+     "settings":"اعدادات"
 }

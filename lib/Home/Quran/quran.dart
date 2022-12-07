@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app1/Home/Quran/sura_name_item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../../my_theme.dart';
+import '../../provider/my_provider.dart';
 
 class QuranTab extends StatelessWidget {
  static const String routeName='quran';
@@ -19,13 +21,16 @@ class QuranTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<MyProvider>(context);
     return Container(
       width: double.infinity,
       child:Column(children: [
         Image.asset('assets/images/quran_main_bg.png'),
         Divider(color: MyThemeData.colorGold,thickness: 3,),
         Text(AppLocalizations.of(context)!.sura_name
-          ,style: Theme.of(context).textTheme.subtitle1,textAlign:TextAlign.center,),
+            ,textAlign:TextAlign.center,style: TextStyle(color:
+            (provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.secondary:
+        Theme.of(context).colorScheme.onSecondary,fontSize: 25,fontWeight: FontWeight.bold)),
         Divider(color: MyThemeData.colorGold,thickness: 3,),
         Expanded(
           child: ListView.separated(
@@ -43,3 +48,4 @@ class QuranTab extends StatelessWidget {
     );
   }
 }
+
