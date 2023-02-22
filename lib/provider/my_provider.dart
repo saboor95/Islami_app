@@ -11,7 +11,7 @@ void changeLanguage(String lang){
 
 String getBackgroundImage(){
   if(mode==ThemeMode.light){
-    return 'assets/images/main_backgroud.png';
+    return 'assets/images/main_background.png';
   }
   return 'assets/images/dark_main_bg.png';
 }

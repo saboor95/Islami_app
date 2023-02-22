@@ -42,14 +42,14 @@ class _SebhaTabState extends State<SebhaTab> {
                     child:(provider.mode==ThemeMode.light)?Image.asset('assets/images/sebha_main_bg.png'):
                Image.asset('assets/images/sebha_dark.png'))),
             Container(
-              margin: EdgeInsets.only(top: 25),
+              margin: EdgeInsets.only(top: 20),
               child: Text('عدد التسبيحات',
                 style:
                 TextStyle(color:(provider.mode==ThemeMode.light)?Theme.of(context).colorScheme.secondary:
                 Theme.of(context).colorScheme.onPrimary,
                     fontSize: 25),),
             ),
-            SizedBox(height: 25,),
+            SizedBox(height: 20,),
             Container(
               height: 70,
               width: 60,

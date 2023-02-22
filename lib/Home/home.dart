@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app1/Home/ahadeth.dart';
 import 'package:islami_app1/Home/Quran/quran.dart';
-import 'package:islami_app1/Home/radio.dart';
+import 'package:islami_app1/Home/Radio/radio_tab.dart';
 import 'package:islami_app1/Home/sebha.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app1/provider/my_provider.dart';

@@ -20,7 +20,7 @@ class SuraDetailsScreen extends StatelessWidget {
         var pro=Provider.of<MyProvider>(context);
         return Stack(
             children: [
-              (pro.mode==ThemeMode.light)?Image.asset('assets/images/main_backgroud.png',fit:BoxFit.fitWidth,width:double.infinity,):
+              (pro.mode==ThemeMode.light)?Image.asset('assets/images/main_background.png',fit:BoxFit.fitWidth,width:double.infinity,):
         Image.asset('assets/images/dark_main_bg.png', fit:BoxFit.fitWidth,width:double.infinity,),
               Scaffold(
                 appBar: AppBar(
